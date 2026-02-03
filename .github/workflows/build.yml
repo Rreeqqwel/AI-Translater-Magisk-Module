@@ -15,10 +15,12 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3 # Это само скачет всё что нужно
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.2 # Фиксируем версию здесь!
 
       - name: Build with Gradle
-        run: gradle assembleDebug # Запускаем напрямую, без gradlew
+        run: gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
